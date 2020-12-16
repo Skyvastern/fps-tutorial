@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scene/weapons/rifle/rifle.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Equip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Root/Anchor:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show_weapon"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Unequip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Root/Anchor:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -90, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide_weapon"
+} ]
+}
+
+[node name="Rifle_A" type="Spatial"]
+script = ExtResource( 1 )
+weapon_name = "Rifle"
+equip_speed = 1.5
+unequip_speed = 1.5
+
+[node name="Root" type="Spatial" parent="."]
+
+[node name="Anchor" type="Spatial" parent="Root"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.5 )
+
+[node name="Body" type="Spatial" parent="Root/Anchor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+
+[node name="Upper" type="MeshInstance" parent="Root/Anchor/Body"]
+transform = Transform( 0.02, 0, 0, 0, 0.03, 0, 0, 0, 0.25, 0, 0.035, -0.142 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="LowerA" type="MeshInstance" parent="Root/Anchor/Body"]
+transform = Transform( 0.02, 0, 0, 0, 0.062482, -0.00826912, 0, 0.0179164, 0.0288379, 0, -0.033, -0.08 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="LowerB" type="MeshInstance" parent="Root/Anchor/Body"]
+transform = Transform( 0.02, 0, 0, 0, 0.0733611, 0.00623735, 0, -0.0155934, 0.0293444, 0, -0.043, 0.048 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Equip = SubResource( 3 )
+anims/Unequip = SubResource( 4 )
