@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scene/world/obstacle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/world/ground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/weapons/ammo_pickup/ammo_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/weapons/armed/rifle/rifle_a/rifle_a_pickup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/weapons/armed/pistol/pistol_b/pistol_b_pickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scene/weapons/armed/pistol/pistol_a/pistol_a_pickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scene/weapons/armed/rifle/rifle_b/rifle_b_pickup.tscn" type="PackedScene" id=8]
+
+[node name="World" type="Spatial"]
+
+[node name="Ground" parent="." instance=ExtResource( 2 )]
+transform = Transform( 50, 0, 0, 0, 0.2, 0, 0, 0, 50, 0, 0, 0 )
+
+[node name="Obstacles" type="Spatial" parent="."]
+
+[node name="Obstacle" parent="Obstacles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -2 )
+
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource( 1 )]
+transform = Transform( 2.9, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7 )
+
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource( 1 )]
+transform = Transform( 1.45, 0, -1.29904, 0, 2.6, 0, 2.51147, 0, 0.75, 11, 1, 0 )
+
+[node name="Obstacle5" parent="Obstacles" instance=ExtResource( 1 )]
+transform = Transform( 9.02268, 0, 0.636396, 0, 4.16, 0, -9.02268, 0, 0.636396, 16, 1, 20 )
+
+[node name="Obstacle4" parent="Obstacles" instance=ExtResource( 1 )]
+transform = Transform( 0.864753, 0.299385, -1.29904, -0.190817, 5.42707, 0, 1.4978, 0.51855, 0.75, -2.58846, 3, 12.4641 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.224725, 0 )
+
+[node name="Pickups" type="Spatial" parent="."]
+
+[node name="Ammo" type="Spatial" parent="Pickups"]
+
+[node name="AmmoPickup" parent="Pickups/Ammo" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97116, 0.471941, 0.997638 )
+
+[node name="AmmoPickup2" parent="Pickups/Ammo" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72778, 0.471941, -6.73486 )
+
+[node name="AmmoPickup3" parent="Pickups/Ammo" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58222, 0.471941, 7.155 )
+
+[node name="AmmoPickup4" parent="Pickups/Ammo" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9853, 0.471941, 9.82796 )
+
+[node name="AmmoPickup5" parent="Pickups/Ammo" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91634, 0.471941, 9.7325 )
+
+[node name="AmmoPickup6" parent="Pickups/Ammo" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5104, 0.471941, 9.35065 )
+
+[node name="AmmoPickup7" parent="Pickups/Ammo" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2741, 0.471941, -3.53685 )
+
+[node name="Weapons" type="Spatial" parent="Pickups"]
+
+[node name="Pistol_A_Pickup" parent="Pickups/Weapons" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4 )
+
+[node name="Pistol_B_Pickup" parent="Pickups/Weapons" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 1 )
+
+[node name="Rifle_A_Pickup" parent="Pickups/Weapons" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 4 )
+
+[node name="Rifle_B_Pickup" parent="Pickups/Weapons" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -5 )

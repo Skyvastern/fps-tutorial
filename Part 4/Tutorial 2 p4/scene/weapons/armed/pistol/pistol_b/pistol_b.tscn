@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/models/weapons/pistol_b/Pistol_B.glb" type="PackedScene" id=1]
+[ext_resource path="res://scene/weapons/muzzle_flash.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/weapons/armed/pistol/pistol.gd" type="Script" id=3]
+[ext_resource path="res://assets/models/weapons/ui/Pistol_B_UI.png" type="Texture" id=4]
+[ext_resource path="res://scene/weapons/armed/pistol/pistol_b/pistol_b_pickup.tscn" type="PackedScene" id=5]
+
+[node name="Pistol_B" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+weapon_name = "Pistol_B"
+weapon_image = ExtResource( 4 )
+weapon_pickup = ExtResource( 5 )
+fire_rate = 3.0
+equip_pos = Vector3( 0.38, -0.22, -0.621 )
+impact_effect = ExtResource( 2 )
+muzzle_flash_path = NodePath("Root/MuzzleFlash")
+equip_speed = 3.0
+unequip_speed = 3.0
+reload_speed = 2.4
+
+[node name="MuzzleFlash" parent="Root" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101073, -0.286604 )
