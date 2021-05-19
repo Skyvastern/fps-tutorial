@@ -16,7 +16,7 @@ const ACCEL = 15.0
 # Jump
 const GRAVITY = -40.0
 const JUMP_SPEED = 15
-var jump_counter = 0
+var jump_counter = false
 const AIR_ACCEL = 9.0
 
 
@@ -52,11 +52,11 @@ func _physics_process(delta):
 	velocity.y += GRAVITY * delta
 	
 	if is_on_floor():
-		jump_counter = 0
+		jump_counter = false
 	
 	# Jump
-	if Input.is_action_just_pressed("jump") and jump_counter < 2:
-		jump_counter += 1
+	if Input.is_action_just_pressed("jump") and not jump_counter:
+		jump_counter = true
 		velocity.y = JUMP_SPEED
 	
 	# Set speed and target velocity
