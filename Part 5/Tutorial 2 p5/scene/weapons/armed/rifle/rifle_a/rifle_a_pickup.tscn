@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scene/weapons/weapon_pickup.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.02151, 0.0871228, 0.242789 )
+
+[node name="Rifle_A_Pickup" type="RigidBody"]
+script = ExtResource( 1 )
+weapon_name = "Rifle_A"
+
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0212435, 0, 0 )
+
+[node name="Upper" type="MeshInstance" parent="Body"]
+transform = Transform( 0.02, 0, 0, 0, 0.03, 0, 0, 0, 0.25, 0, 0.035, -0.142 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="LowerA" type="MeshInstance" parent="Body"]
+transform = Transform( 0.02, 0, 0, 0, 0.062482, -0.00826912, 0, 0.0179164, 0.0288379, 0, -0.033, -0.08 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="LowerB" type="MeshInstance" parent="Body"]
+transform = Transform( 0.02, 0, 0, 0, 0.0733611, 0.00623735, 0, -0.0155934, 0.0293444, 0, -0.043, 0.048 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0212435, -0.0226094, -0.143812 )
+shape = SubResource( 3 )
