@@ -43,7 +43,7 @@ func _ready():
 	
 	# Initialize references for each weapons
 	for w in weapons:
-		if weapons[w] != null:
+		if is_instance_valid(weapons[w]):
 			weapon_setup(weapons[w])
 	
 	# Set current weapon to unarmed
@@ -88,7 +88,7 @@ func change_weapon(new_weapon_slot):
 		current_weapon.update_ammo() # Refresh
 		return
 	
-	if weapons[new_weapon_slot] == null:
+	if is_instance_valid(weapons[new_weapon_slot]) == false:
 		return
 	
 	current_weapon_slot = new_weapon_slot
@@ -98,7 +98,7 @@ func change_weapon(new_weapon_slot):
 	update_weapon_index()
 	
 	# Change Weapons
-	if current_weapon != null:
+	if is_instance_valid(current_weapon):
 		unequipped_weapon = false
 		current_weapon.unequip()
 	
@@ -152,7 +152,7 @@ func reload():
 
 # Ammo Pickup
 func add_ammo(amount):
-	if current_weapon == null || current_weapon.name == "Unarmed":
+	if is_instance_valid(current_weapon) == false || current_weapon.name == "Unarmed":
 		return false
 	
 	current_weapon.update_ammo("add", amount)
@@ -166,7 +166,7 @@ func add_weapon(weapon_data):
 	if not weapon_data["Name"] in all_weapons:
 		return
 	
-	if weapons["Primary"] == null:
+	if is_instance_valid(weapons["Primary"]) == false:
 		
 		# Instance the new weapon
 		var weapon = Global.instantiate_node(all_weapons[weapon_data["Name"]], Vector3.ZERO, self)
@@ -184,7 +184,7 @@ func add_weapon(weapon_data):
 		
 		return
 	
-	if weapons["Secondary"] == null:
+	if is_instance_valid(weapons["Secondary"]) == false:
 		
 		# Instance the new weapon
 		var weapon = Global.instantiate_node(all_weapons[weapon_data["Name"]], Vector3.ZERO, self)
@@ -224,7 +224,7 @@ func switch_weapon(weapon_data):
 	# Checks whether there's any empty slot available
 	# If there is, then we simply add that new weapon to the empty slot
 	for i in weapons:
-		if weapons[i] == null:
+		if is_instance_valid(weapons[i]) == false:
 			add_weapon(weapon_data)
 			return
 	
