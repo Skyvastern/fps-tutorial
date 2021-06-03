@@ -220,11 +220,6 @@ func aim_down_sights(value, delta):
 
 
 
-
-
-
-
-
-
-
-
+# When this node gets deleted
+func _exit_tree():
+	sway_pivot.queue_free()
