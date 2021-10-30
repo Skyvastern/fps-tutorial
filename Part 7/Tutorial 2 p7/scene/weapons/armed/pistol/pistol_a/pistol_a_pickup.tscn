@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scene/weapons/weapon_pickup.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.0214609, 0.0722448, 0.15979 )
+
+[node name="Pistol_A_Pickup" type="RigidBody"]
+collision_layer = 524288
+script = ExtResource( 1 )
+weapon_name = "Pistol_A"
+
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0219932, 0, 0 )
+
+[node name="Upper" type="MeshInstance" parent="Body"]
+transform = Transform( 0.02, 0, 0, 0, 0.03, 0, 0, 0, 0.15, 0, 0.041, -0.095 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Lower" type="MeshInstance" parent="Body"]
+transform = Transform( 0.02, 0, 0, 0, 0.0791418, 0.00438249, 0, -0.0116866, 0.0296782, 0, -0.013, 0.037 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0219932, -0.00276914, -0.0830929 )
+shape = SubResource( 3 )

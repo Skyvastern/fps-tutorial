@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/world/ground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/world/obstacle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://new_env.tres" type="Environment" id=9]
+
+[node name="World_02" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 9 )
+
+[node name="Ground" parent="." instance=ExtResource( 5 )]
+transform = Transform( 50, 0, 0, 0, 0.2, 0, 0, 0, 50, 0, 0, 0 )
+
+[node name="Obstacles" type="Spatial" parent="."]
+
+[node name="Obstacle" parent="Obstacles" instance=ExtResource( 6 )]
+transform = Transform( 1.73338, -0.47587, 0, 0.151651, 5.43922, 0, 0, 0, 1.5, -2.58846, 3, 12.4641 )
+
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource( 6 )]
+transform = Transform( 8.52715, -26.9167, 0, 14.7695, 15.5404, 0, 0, 0, 1.5, -15.5309, -6.64023, 4.4641 )
+
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource( 6 )]
+transform = Transform( 1.63507, -1.86743, 0, 0.595115, 5.13072, 0, 0, 0, 1.5, -2.58846, 3, 4.28072 )
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0.224725, 12 )

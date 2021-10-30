@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/models/weapons/rifle_b/Rifle_B.glb" type="PackedScene" id=1]
+[ext_resource path="res://scene/weapons/muzzle_flash.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/weapons/armed/rifle/rifle.gd" type="Script" id=3]
+[ext_resource path="res://assets/models/weapons/ui/Rifle_B_UI.png" type="Texture" id=4]
+[ext_resource path="res://scene/weapons/armed/rifle/rifle_b/rifle_b_pickup.tscn" type="PackedScene" id=5]
+
+[node name="Rifle_B" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+weapon_name = "Rifle_B"
+weapon_image = ExtResource( 4 )
+weapon_pickup = ExtResource( 5 )
+fire_rate = 2.75
+equip_pos = Vector3( 0.368, -0.208, -0.585 )
+impact_effect = ExtResource( 2 )
+muzzle_flash_path = NodePath("Root/MuzzleFlash")
+equip_speed = 3.0
+unequip_speed = 3.0
+reload_speed = 2.0
+ads_pos = Vector3( 0, -0.208, -0.27 )
+
+[node name="Mesh" parent="Root/Body/Skeleton" index="0"]
+layers = 2
+
+[node name="MuzzleFlash" parent="Root" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0519447, -0.633326 )
+layers = 2
